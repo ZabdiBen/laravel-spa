@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PortfolioSimple;
+//use App\Http\Controllers\PortfolioController;
+//use App\Http\Controllers\PortfolioApi;
+//use App\Http\Controllers\Portfolio;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
 Route::view('/about', 'about')->name('about');
-Route::view('/portfolio', 'portfolio')->name('portfolio');
+Route::get('/portfolio', [PortfolioSimple::class, 'show'])->name('portfolio');
+//Route::view('/portfolio', 'PortfolioSimple@index')->name('portfolio');
 Route::view('/contact', 'contact')->name('contact');
+
+//metodo invoke php artisan make:controller invoke
+//Route::get('/portfolio', PortfolioController::class)->name('portfolio');
+//Route::get('/portfolio', [Portfolio::class, 'index'])->name('portfolio');
 
 
 // Route::get('/', function () {
@@ -24,6 +33,10 @@ Route::view('/contact', 'contact')->name('contact');
 // })->name('home');
 
 //rutas con parametros
-Route::get('saludo/{nombre?}', function ($nombre = 'invitado') {
+/*Route::get('saludo/{nombre?}', function ($nombre = 'invitado') {
   return 'hola ' . $nombre;
 });
+*/
+
+//Route::resource('projects', Portfolio::class);
+//Route::apiResource('projects', PortfolioApi::class);
